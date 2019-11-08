@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import FakeTerminal from "./FakeTerminal";
+import Skills from "./Skills";
 
 const Backplate = styled.main`
     height: 100vh;
@@ -7,35 +9,24 @@ const Backplate = styled.main`
 
     display: grid;
     grid-template: 100vh / 50vw 50vw;
-    align-items: center;
+    @media (max-width: 660px) {
+        grid-template: 100vh / 90vw;
+    }
+    align-items: flex-start;
     justify-content: center;
+    padding-top: 10vh;
     padding-left: 10vw;
+    padding-right: 5vw;
 
     background-image: url("${require("../assets/svg/circuit-board.svg")}"), 
                       linear-gradient(139deg, #0e4452 11%, #002b36 100%);
 `;
 
-const Code = styled.code`
-    font-family: "Fira Mono", monospace;
-    color: #e7e7e7;
-    font-size: 2.5rem;
-`;
-
-const Prompt = styled.span`
-    color: #d97625;
-`;
-
 function App() {
     return (
         <Backplate>
-            <Code>
-                <Prompt>$</Prompt> whoami <br />
-                Navrin Thomas. <br /> <br />
-                <Prompt>$</Prompt> id -gn $USER <br />
-                Frontend single page applications, <br />
-                Backend API development, <br />
-                Server tooling and deployment.
-            </Code>
+            <FakeTerminal />
+            <Skills />
         </Backplate>
     );
 }
